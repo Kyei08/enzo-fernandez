@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enzo Fernández | Chelsea FC Midfielder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0066CC 0%, #003399 50%, #001f66 100%);
+            background-image: url('Enzo.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Animated Background Overlay */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.7) 0%, rgba(0, 51, 153, 0.8) 50%, rgba(0, 31, 102, 0.9) 100%);
+            z-index: -2;
+        }
+
+        /* Particle System */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            animation-delay: -2s;
+            animation-duration: 8s;
+        }
+
+        .particle:nth-child(even) {
+            animation-delay: -4s;
+            animation-duration: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Header Section */
+        .header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 51, 153, 0.3), rgba(0, 31, 102, 0.6));
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(45deg, #ffffff, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideIn 2s ease-out 0.5s both;
+        }
+
+        .jersey-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 4rem;
+            font-weight: 900;
+            opacity: 0.3;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 50px rgba(255, 255, 255, 0.8), 0 0 70px rgba(135, 206, 235, 0.6); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: #87ceeb;
+            text-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #87ceeb;
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: slideUp 1s ease-out;
+        }
+
+        .glass-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(45deg, #ffffff, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #87ceeb, transparent);
+            border-radius: 2px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(135, 206, 235, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #87ceeb;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #87ceeb, rgba(135, 206, 235, 0.3));
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 50px;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: #87ceeb;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(135, 206, 235, 0.8);
+        }
+
+        .timeline-date {
+            font-weight: 900;
+            color: #87ceeb;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid #87ceeb;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            animation: floatAround 15s ease-in-out infinite;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 60%; right: 15%; animation-delay: -5s; }
+        .floating-element:nth-child(3) { bottom: 30%; left: 20%; animation-delay: -10s; }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, -60px) rotate(180deg); }
+            75% { transform: translate(-40px, 20px) rotate(270deg); }
+        }
+
+        /* Credits Section */
+        .credits-section {
+            background: linear-gradient(135deg, rgba(0, 31, 102, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%);
+            border-top: 1px solid rgba(135, 206, 235, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .credit-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(135, 206, 235, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #87ceeb, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .credit-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .credit-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 50px rgba(135, 206, 235, 0.2);
+            border-color: rgba(135, 206, 235, 0.4);
+        }
+
+        .credit-role {
+            font-size: 0.9rem;
+            color: #87ceeb;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .credit-name {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .credit-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 12px 20px;
+            background: rgba(135, 206, 235, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(135, 206, 235, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .contact-link:hover {
+            background: rgba(135, 206, 235, 0.2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(135, 206, 235, 0.3);
+            border-color: rgba(135, 206, 235, 0.4);
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(135, 206, 235, 0.2);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 31, 102, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 100px 40px 40px;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            min-width: 200px;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(135, 206, 235, 0.2);
+            color: #87ceeb;
+            transform: translateX(10px);
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1200px) {
+            .section {
+                padding: 80px 30px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .glass-container {
+                padding: 25px;
+                border-radius: 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .jersey-number {
+                font-size: 2.5rem;
+                top: 15px;
+                right: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 30px;
+                margin-bottom: 30px;
+            }
+            
+            .timeline-content {
+                padding: 15px;
+            }
+            
+            .credits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .credit-card {
+                padding: 25px 20px;
+            }
+            
+            .credit-name {
+                font-size: 1.5rem;
+            }
+            
+            .contact-link {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 50px 15px;
+            }
+            
+            .glass-container {
+                padding: 20px;
+                margin: 0 5px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .jersey-number {
+                font-size: 2rem;
+                top: 10px;
+                right: 15px;
+            }
+            
+            .mobile-nav {
+                padding: 80px 20px 40px;
+            }
+            
+            .mobile-nav a {
+                font-size: 1.3rem;
+                padding: 12px 20px;
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        /* Landscape Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .header {
+                height: 100vh;
+                padding: 20px;
+            }
+            
+            .hero-content {
+                transform: scale(0.9);
+            }
+        }
+
+        /* Tablet Portrait */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .credits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Large Screens */
+        @media (min-width: 1400px) {
+            .section {
+                max-width: 1400px;
+            }
+            
+            .hero-title {
+                font-size: 9rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Interactive Cursor Effect */
+        .cursor-glow {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(135, 206, 235, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Navigation Toggle -->
+    <div class="mobile-nav-toggle" id="mobileNavToggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#home" onclick="closeMobileNav()">Home</a></li>
+            <li><a href="#stats" onclick="closeMobileNav()">Stats</a></li>
+            <li><a href="#career" onclick="closeMobileNav()">Career</a></li>
+            <li><a href="#achievements" onclick="closeMobileNav()">Achievements</a></li>
+            <li><a href="#credits" onclick="closeMobileNav()">Credits</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    
+    <!-- Background Overlay -->
+    <div class="bg-overlay"></div>
+    
+    <!-- Particle System -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-element">⚽</div>
+    <div class="floating-element">🏆</div>
+    <div class="floating-element">⭐</div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#stats">Stats</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#credits">Credits</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Header Section -->
+    <section id="home" class="header">
+        <div class="jersey-number">8</div>
+        <div class="hero-content">
+            <h1 class="hero-title">ENZO</h1>
+            <p class="hero-subtitle">FERNÁNDEZ</p>
+            <p style="font-size: 1.2rem; opacity: 0.8; font-weight: 600;">Chelsea FC • Midfielder • Argentina</p>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section id="stats" class="section fade-in">
+        <div class="glass-container">
+            <h2 class="section-title">Player Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">121M€</span>
+                    <span class="stat-label">Transfer Value</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">21</span>
+                    <span class="stat-label">Age</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Jersey Number</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1.74m</span>
+                    <span class="stat-label">Height</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">78kg</span>
+                    <span class="stat-label">Weight</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">CM</span>
+                    <span class="stat-label">Position</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Career Timeline -->
+    <section id="career" class="section fade-in">
+        <div class="glass-container">
+            <h2 class="section-title">Career Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3>Chelsea FC</h3>
+                        <p>Record-breaking €121 million transfer to Chelsea, becoming one of the most expensive midfielders in history.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-content">
+                        <h3>FIFA World Cup Winner</h3>
+                        <p>Key player in Argentina's World Cup victory, earning Young Player of the Tournament award.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019-2022</div>
+                    <div class="timeline-content">
+                        <h3>SL Benfica</h3>
+                        <p>Breakthrough in European football, establishing himself as one of the most promising midfielders.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2018-2019</div>
+                    <div class="timeline-content">
+                        <h3>Club Atlético River Plate</h3>
+                        <p>Professional debut at River Plate, showcasing exceptional technical abilities and vision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Achievements -->
+    <section id="achievements" class="section fade-in">
+        <div class="glass-container">
+            <h2 class="section-title">Major Achievements</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">🏆</span>
+                    <span class="stat-label">FIFA World Cup 2022</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">⭐</span>
+                    <span class="stat-label">Young Player of Tournament</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">🥇</span>
+                    <span class="stat-label">Copa Libertadores</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">🎯</span>
+                    <span class="stat-label">Multiple Player of the Month</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px; text-align: center;">
+                <h3 style="color: #87ceeb; margin-bottom: 20px; font-size: 1.5rem;">Playing Style</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
+                    Enzo Fernández is renowned for his exceptional passing range, tactical intelligence, and ability to control the tempo of the game. 
+                    His vision and technical skills make him a crucial link between defense and attack, while his work rate and pressing contribute 
+                    significantly to Chelsea's high-intensity playing style. A modern midfielder who combines creativity with defensive solidity.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Credits Section -->
+    <section id="credits" class="section credits-section fade-in">
+        <div class="glass-container">
+            <h2 class="section-title">Credits & Contact</h2>
+            <div class="credits-grid">
+                <div class="credit-card">
+                    <div class="credit-role">Web Designer</div>
+                    <div class="credit-name">Emmanuel Bediako</div>
+                    <div class="credit-contact">
+                        <a href="mailto:bediakoemmanuel036@gmail.com" class="contact-link">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            bediakoemmanuel036@gmail.com
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="credit-card">
+                    <div class="credit-role">Graphic Designer</div>
+                    <div class="credit-name">Pxblo Picxsso</div>
+                    <div class="credit-contact">
+                        <a href="https://linktr.ee/pxblopicxsso" target="_blank" rel="noopener noreferrer" class="contact-link">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 13A5 5 0 0 0 20 13A5 5 0 0 0 10 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 13A5 5 0 0 0 4 13A5 5 0 0 0 14 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            linktr.ee/pxblopicxsso
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-note">
+                <p>This website was crafted with passion for football and web design excellence.</p>
+                <p style="margin-top: 10px; opacity: 0.7;">© 2025 • Built with dynamic animations and responsive design</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Particle System
+        function createParticles() {
+            const particleContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size and position
+                const size = Math.random() * 6 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                
+                particleContainer.appendChild(particle);
+            }
+        }
+        
+        // Cursor Glow Effect
+        function initCursorGlow() {
+            const cursorGlow = document.getElementById('cursorGlow');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.left = (e.clientX - 50) + 'px';
+                cursorGlow.style.top = (e.clientY - 50) + 'px';
+            });
+        }
+        
+        // Scroll Animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Smooth Scrolling
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Parallax Effect on Scroll
+        function initParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.floating-element');
+                
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.2);
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        }
+        
+        // Dynamic Background Color Change
+        function initDynamicBackground() {
+            window.addEventListener('scroll', () => {
+                const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+                const hue = 220 + (scrollPercent * 40); // Blue to purple transition
+                document.body.style.filter = `hue-rotate(${hue - 220}deg)`;
+            });
+        }
+        
+        // Mobile Navigation
+        function initMobileNavigation() {
+            const toggle = document.getElementById('mobileNavToggle');
+            const nav = document.getElementById('mobileNav');
+            
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                toggle.style.transform = nav.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0deg)';
+            });
+            
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                    nav.classList.remove('active');
+                    toggle.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        function closeMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            const toggle = document.getElementById('mobileNavToggle');
+            nav.classList.remove('active');
+            toggle.style.transform = 'rotate(0deg)';
+        }
+        
+        // Enhanced Responsive Particle System
+        function createResponsiveParticles() {
+            const particleContainer = document.getElementById('particles');
+            const isMobile = window.innerWidth < 768;
+            const particleCount = isMobile ? 25 : 50; // Fewer particles on mobile for performance
+            
+            // Clear existing particles
+            particleContainer.innerHTML = '';
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Responsive sizing
+                const size = isMobile ? Math.random() * 4 + 2 : Math.random() * 6 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                
+                particleContainer.appendChild(particle);
+            }
+        }
+        
+        // Responsive Cursor Glow
+        function initResponsiveCursorGlow() {
+            const cursorGlow = document.getElementById('cursorGlow');
+            const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            
+            if (isMobile) {
+                cursorGlow.style.display = 'none'; // Hide on touch devices
+            } else {
+                document.addEventListener('mousemove', (e) => {
+                    cursorGlow.style.left = (e.clientX - 50) + 'px';
+                    cursorGlow.style.top = (e.clientY - 50) + 'px';
+                });
+            }
+        }
+        
+        // Resize Handler
+        function handleResize() {
+            createResponsiveParticles();
+            
+            // Adjust animations based on screen size
+            const isMobile = window.innerWidth < 768;
+            if (isMobile) {
+                // Reduce animation intensity on mobile
+                document.querySelectorAll('.floating-element').forEach(el => {
+                    el.style.animationDuration = '20s';
+                });
+            } else {
+                document.querySelectorAll('.floating-element').forEach(el => {
+                    el.style.animationDuration = '15s';
+                });
+            }
+        }
+        
+        // Initialize all effects
+        document.addEventListener('DOMContentLoaded', () => {
+            createResponsiveParticles();
+            initResponsiveCursorGlow();
+            initScrollAnimations();
+            initSmoothScroll();
+            initParallax();
+            initDynamicBackground();
+            initMobileNavigation();
+            
+            // Handle window resize
+            window.addEventListener('resize', handleResize);
+            
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 1s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+        
+        // Interactive hover effects for stat cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const statCards = document.querySelectorAll('.stat-card');
+            
+            statCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.05) rotateX(5deg)';
+                    card.style.boxShadow = '0 20px 40px rgba(135, 206, 235, 0.4)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
